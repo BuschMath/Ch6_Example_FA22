@@ -1,16 +1,28 @@
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
 int main()
 {
-	cout << "Counting program:\n";
-	int count = 1;
+	ifstream inFile;
+	inFile.open("C:/Users/busch/OneDrive - Iowa Central Community College/Classes/C++/Presentations/Ch6Examples/InputEOFExample.dat");
 
-	while (count <= 100)
+	char data;
+
+	if (!inFile)
 	{
-		cout << count << endl;
-		count = count + 1;
+		cout << "Can't find file!" << endl;
+
+		return 1;
+	}
+
+	inFile >> data; // Priming read
+
+	while (inFile)
+	{
+		cout << data << endl;
+		inFile >> data;
 	}
 
 	return 0;
